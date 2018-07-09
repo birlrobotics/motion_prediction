@@ -1,2 +1,4 @@
 pkl/
 ops_logs/
+*.pyc
+*.pkl

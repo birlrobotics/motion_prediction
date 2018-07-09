@@ -39,6 +39,11 @@ log.addHandler(fh)
 
 ## generate train/val/test datasets based on raw data
 X, Y = generate_data('./reg_fmt_datasets.pkl')
+# save dataset
+pickle.dump(X,open("./dataset/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
+pickle.dump(Y,open("./dataset/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
+print ("Save data successfully!")
+
 
 ## build the lstm model
 model_fn = lstm_model()
@@ -46,11 +51,6 @@ config = tf.contrib.learn.RunConfig(log_step_count_steps=200, save_checkpoints_s
 
 estimator = learn.Estimator(model_fn=model_fn, model_dir=LOG_DIR, config=config)
 regressor = learn.SKCompat(estimator)
-
-# save_summary_steps=100,
-# save_checkpoints_secs=_USE_DEFAULT,
-# keep_checkpoint_max=5,
-# keep_checkpoint_every_n_hours=10000,
 
 
 ## create a validation monitor
@@ -60,8 +60,10 @@ validation_monitor = learn.monitors.ValidationMonitor(X['val'], Y['val'], every_
 regressor.fit(X['train'], Y['train'], monitors=[validation_monitor], batch_size=BATCH_SIZE, steps=TRAINING_STEPS)
 
 
-#todo: (another file) try save regressor and directly use it
-#todo: (another file) a single trajectory test, generate trajectory and visualize
+#todo: test average predicted error each step
+#todo: add experiment, joint angles error
+#todo: add experiment, joing angles error in Cartersian space
+
 
 ## prepare for testing
 step = 0.05
@@ -99,8 +101,6 @@ for X_test,Y_test in zip(X['test'], Y['test']):
         y_true_split = y_true[:, begin:end]
         y_pred_split = y_pred[:, begin:end]
 
-
-        #todo: call min_max function
         ## restore to origin data (0-1 to original range)
         y_true_restore = restore_data.restore_dataset(y_true_split)
         pred_restore = restore_data.restore_dataset(y_pred_split)
@@ -109,7 +109,6 @@ for X_test,Y_test in zip(X['test'], Y['test']):
         # print('predicted:', pred_restore)
 
         #todo: save true and pred into new file
-
 
         # update iteration and check error
         if (i + 1) < len(lstm.DENSE_LAYER_RANGE):
