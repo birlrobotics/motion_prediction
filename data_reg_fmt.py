@@ -4,8 +4,10 @@ This script only works in python2 environment
 from __future__ import print_function
 import pickle
 import numpy as np
+import pre_process_data
 
 # datasets = joblib.load('datasets_reg.pkl')
+pre_process_data.main()
 
 pkl_file = open('./pkl/datasets_reg.pkl', 'rb')
 datasets = pickle.load(pkl_file)

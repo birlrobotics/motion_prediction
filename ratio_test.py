@@ -94,10 +94,10 @@ for X_test,Y_test in zip(X['test'], Y['test']):
         y_true_split = y_true[:, begin:end]
         y_pred_split = y_pred[:, begin:end]
 
-        # # for debug
-        # pickle.dump(y_true_split,open("test_y_true.pkl","wb"))
-        # pickle.dump(y_pred_split, open("test_y_predicted.pkl", "wb"))
-        # print("save successfully!")
+        # for debug
+        pickle.dump(y_true_split,open("test_y_true.pkl","wb"))
+        pickle.dump(y_pred_split, open("test_y_predicted.pkl", "wb"))
+        print("save successfully!")
 
         ## restore to origin data (0-1 to original range)
         y_true_restore = restore_data.restore_dataset(y_true_split)

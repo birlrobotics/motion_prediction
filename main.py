@@ -40,14 +40,14 @@ log.addHandler(fh)
 
 try:
     ## load model and dataset
-    X = pickle.load(open("./dataset/x_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
-    Y = pickle.load(open("./dataset/y_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
+    X = pickle.load(open("./datasets/x_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
+    Y = pickle.load(open("./datasets/y_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
 except:
     ## generate train/val/test datasets based on raw data
     X, Y = generate_data('./reg_fmt_datasets.pkl')
     # save dataset
-    pickle.dump(X,open("./dataset/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
-    pickle.dump(Y,open("./dataset/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
+    pickle.dump(X,open("./datasets/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
+    pickle.dump(Y,open("./datasets/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
     print ("Save data successfully!")
 
 
@@ -79,22 +79,17 @@ ratio = [step * i for i in range(1, int(1 / step) + 1)]
 mse_array = np.zeros(len(ratio))
 count = 0
 
-# start test
-for X_test,Y_test in zip(X['test'], Y['test']):
-
-    # X_test = np.expand_dims(X_test, axis = 0)
-    # y_true = Y_test.reshape((lstm.DENSE_LAYER_DIM))
-    # y_pred = regressor.predict(X_test)
-    # y_pred = y_pred.reshape((lstm.DENSE_LAYER_DIM))
-
-    ## predict using test datasets and  calculate rmse with reshaping correctly
-    y_true = Y_test.reshape((-1,lstm.DENSE_LAYER_DIM))
-
-    y_pred = regressor.predict(X_test)
-    y_pred = y_pred.reshape((-1,lstm.DENSE_LAYER_DIM))
-
-    rmse = np.sqrt(((y_true - y_pred) ** 2).mean())
-    print("rmse: %f" % rmse)
+# # start test
+# for X_test,Y_test in zip(X['test'], Y['test']):
+#
+#     ## predict using test datasets and  calculate rmse with reshaping correctly
+#     y_true = Y_test.reshape((-1,lstm.DENSE_LAYER_DIM))
+#
+#     y_pred = regressor.predict(X_test)
+#     y_pred = y_pred.reshape((-1,lstm.DENSE_LAYER_DIM))
+#
+#     rmse = np.sqrt(((y_true - y_pred) ** 2).mean())
+#     print("rmse: %f" % rmse)
 
 #     ## reshape for human-friendly illustration
 #     y_true = y_true.reshape((-1, lstm.DENSE_LAYER_SUM, lstm.OUTPUT_DIM))

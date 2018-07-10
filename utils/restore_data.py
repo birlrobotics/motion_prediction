@@ -7,7 +7,7 @@ import pickle
 import numpy as np
 
 #start testing
-min_max_path = open('../pkl/min_max_scaler.pkl','rb')
+min_max_path = open('./pkl/min_max_scaler.pkl','rb')
 MIN_MAX_SCALAR = pickle.load(min_max_path)
 
 def restore_dataset(dataset):
@@ -59,7 +59,7 @@ def restore_single_rdata(data):
     if data_len != scalar_len:
         # expand the data size to our size
         z = np.zeros((scalar_len - data_len,), dtype=data.dtype)
-        exp_data = np.concatenate((data, z), axis=0)
+        exp_data = np.concatenate((z, data), axis=0)
     else:
         exp_data = data
 
