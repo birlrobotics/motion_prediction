@@ -122,13 +122,14 @@ def split_data(data, train_pos=0.7, val_pos=0.8, test_pos=1.0):
     splits data to training, validation and testing parts
     """
     random.shuffle(data)
-    
+
     num = len(data)
     train_pos = int(num * train_pos)
     val_pos = int(num * val_pos)
     
     train_data = data[:train_pos]
     val_data = data[train_pos:val_pos]
+
     test_data = data[val_pos:]
 
     return train_data, val_data, test_data
@@ -136,7 +137,7 @@ def split_data(data, train_pos=0.7, val_pos=0.8, test_pos=1.0):
 
 def generate_data(file_name):
     """generates data with based on a function func"""
-    
+
     pkl_file = open(file_name,'rb')
     datasets = pickle.load(pkl_file)
     print('length of tasks:', len(datasets))
@@ -144,11 +145,12 @@ def generate_data(file_name):
     seqs = []
     for i, task in enumerate(datasets):
         print('\nTask {0} has {1} seqs'.format(str(i), len(task)))
-        
+
         for j, seq in enumerate(task):
             print('seq {0} has shape {1}'.format(str(j), seq.shape))
             seqs.append(seq)
     print('num of seqs:', len(seqs))
+
 
     train_seqs, val_seqs, test_seqs = split_data(seqs)
     

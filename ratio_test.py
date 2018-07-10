@@ -1,7 +1,3 @@
-'''
-a single trajectory test, generate trajectory and visualize, batch by batch
-'''
-
 from __future__ import print_function
 import numpy as np
 import matplotlib
@@ -22,10 +18,10 @@ from data_processing import generate_data
 import logging
 
 ## optimization hyper-parameters
-TRAINING_STEPS = 100
+TRAINING_STEPS = 10000
 VALIDATION_STEPS = 1000
 BATCH_SIZE = 100
-LOG_DIR = './ops_logs/lstm/py2'
+LOG_DIR = './ops_logs/lstm/model_20_5_6'
 
 ## Save log to a local file
 # get TF logger
@@ -41,12 +37,10 @@ fh.setLevel(logging.DEBUG)
 fh.setFormatter(formatter)
 log.addHandler(fh)
 
-## generate train/val/test datasets based on raw data
-X, Y = generate_data('./reg_fmt_datasets.pkl')
-
 ## load model and dataset
-pickle.dump(X,open("./dataset/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
-pickle.dump(X,open("./dataset/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
+X=pickle.load(open("./dataset/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "rb"))
+Y=pickle.load(open("./dataset/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "rb"))
+
 
 ## build the lstm model
 model_fn = lstm_model()
@@ -60,8 +54,13 @@ regressor = learn.SKCompat(estimator)
 validation_monitor = learn.monitors.ValidationMonitor(X['val'], Y['val'], every_n_steps=VALIDATION_STEPS)
 
 ## fit the train dataset
-regressor.fit(X['train'], Y['train'], monitors=None, batch_size=BATCH_SIZE, steps=1) #load model
+TRAINING_STEPS = 1
+regressor.fit(X['train'], Y['train'], monitors=[validation_monitor], batch_size=BATCH_SIZE, steps=TRAINING_STEPS)
 
+
+#todo: test average predicted error each step
+#todo: add experiment, joint angles error
+#todo: add experiment, joing angles error in Cartersian space
 
 
 ## prepare for testing
@@ -73,11 +72,6 @@ count = 0
 
 # start test
 for X_test,Y_test in zip(X['test'], Y['test']):
-
-    # X_test = np.expand_dims(X_test, axis = 0)
-    # y_true = Y_test.reshape((lstm.DENSE_LAYER_DIM))
-    # y_pred = regressor.predict(X_test)
-    # y_pred = y_pred.reshape((lstm.DENSE_LAYER_DIM))
 
     ## predict using test datasets and  calculate rmse with reshaping correctly
     y_true = Y_test.reshape((-1,lstm.DENSE_LAYER_DIM))
@@ -100,13 +94,14 @@ for X_test,Y_test in zip(X['test'], Y['test']):
         y_true_split = y_true[:, begin:end]
         y_pred_split = y_pred[:, begin:end]
 
-        #todo: call min_max function
+        # # for debug
+        # pickle.dump(y_true_split,open("test_y_true.pkl","wb"))
+        # pickle.dump(y_pred_split, open("test_y_predicted.pkl", "wb"))
+        # print("save successfully!")
+
         ## restore to origin data (0-1 to original range)
         y_true_restore = restore_data.restore_dataset(y_true_split)
         pred_restore = restore_data.restore_dataset(y_pred_split)
-
-        # print('y_true:', y_true_restore)
-        # print('predicted:', pred_restore)
 
         #todo: save true and pred into new file
 
@@ -115,12 +110,11 @@ for X_test,Y_test in zip(X['test'], Y['test']):
             begin += lstm.DENSE_LAYER_RANGE[i]
             end = begin + lstm.DENSE_LAYER_RANGE[i + 1]
 
-
         ## write mse against ratio to csv file
         for i, r in enumerate(ratio):
             index = int(r * len(y_true_restore) - 1)
             # imse = calculate_mse.mse(pred_restore[index],y_true_restore[index])
-            dmse = calculate_mse.dist(pred_restore[index], y_true_restore[index])
+            dmse,_ = calculate_mse.dist(pred_restore[index], y_true_restore[index])
             mse_array[i] = mse_array[i] + dmse
 
         count+=1
@@ -133,7 +127,7 @@ mse_array = np.divide(mse_array,count)
 
 #write to csv file
 CSV_PATH = './csv/'+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])
-with open(CSV_PATH+'result.csv', 'a') as csvfile:
+with open(CSV_PATH+'ratio_result.csv', 'a') as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=',',
                             quotechar=',', quoting=csv.QUOTE_MINIMAL)
     spamwriter.writerow(ratio)

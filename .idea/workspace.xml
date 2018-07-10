@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ccd9c2c-3db2-4fb3-84ad-2ffe8b89b704" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/trajectory_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/visualization.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ratio_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/traj_gen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/test_lstm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test_lstm.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_reg_fmt.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_reg_fmt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trajectory_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/calculate_mse.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/calculate_mse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/restore_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/restore_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/visualization.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,14 +24,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.9">
+    <splitter split-orientation="horizontal" split-proportion="0.6289593">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+                <state relative-caret-position="-202">
+                  <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
                   <folding>
                     <element signature="e#0#37#0" expanded="true" />
                   </folding>
@@ -31,13 +39,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="trajectory_test.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/trajectory_test.py">
+          <file leaf-file-name="restore_data.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/utils/restore_data.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="400">
-                  <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+                <state relative-caret-position="441">
+                  <caret line="82" selection-start-line="82" selection-end-line="82" />
                   <folding>
-                    <element signature="e#0#37#0" expanded="true" />
+                    <element signature="e#24#61#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -45,14 +53,30 @@
           </file>
           <file leaf-file-name="visualization.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/utils/visualization.py">
-              <provider selected="true" editor-type-id="text-editor" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="206">
+                  <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+                  <folding>
+                    <element signature="e#0#37#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="traj_gen_test.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/traj_gen_test.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="444">
+                  <caret line="103" selection-start-line="103" selection-end-line="106" selection-end-column="33" />
+                </state>
+              </provider>
             </entry>
           </file>
           <file leaf-file-name="data_reg_fmt.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/data_reg_fmt.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="129">
-                  <caret line="6" selection-start-line="6" selection-end-line="6" />
+                <state relative-caret-position="285">
+                  <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
                   <folding>
                     <element signature="e#54#91#0" expanded="true" />
                   </folding>
@@ -60,13 +84,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="calculate_mse.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/utils/calculate_mse.py">
+          <file leaf-file-name="data_test.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/data_test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="308">
-                  <caret line="14" selection-start-line="14" selection-end-line="14" />
+                <state relative-caret-position="361">
+                  <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
                   <folding>
-                    <element signature="e#0#37#0" expanded="true" />
+                    <element signature="e#54#91#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -79,22 +103,10 @@
           <file leaf-file-name="lstm.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lstm.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="181">
-                  <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+                <state relative-caret-position="114">
+                  <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
                   <folding>
                     <element signature="e#24#88#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="restore_data.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/utils/restore_data.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="440">
-                  <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="28" />
-                  <folding>
-                    <element signature="e#24#61#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -103,8 +115,8 @@
           <file leaf-file-name="data_processing.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/data_processing.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1690">
-                  <caret line="120" column="7" selection-start-line="120" selection-start-column="7" selection-end-line="120" selection-end-column="7" />
+                <state relative-caret-position="197">
+                  <caret line="128" column="4" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="4" />
                   <folding>
                     <element signature="e#24#88#0" expanded="true" />
                   </folding>
@@ -112,10 +124,22 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="tensorflow_save-load-model.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ratio_test.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/ratio_test.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="96" selection-start-line="96" selection-end-line="99" selection-end-column="37" />
+                  <folding>
+                    <element signature="e#0#37#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="tensorflow_save-load-model.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tensorflow_save-load-model.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-509">
+                <state relative-caret-position="608">
                   <caret line="33" selection-start-line="33" selection-end-line="34" selection-end-column="19" />
                 </state>
               </provider>
@@ -149,10 +173,13 @@
       <find>count</find>
       <find>dump</find>
       <find>MODEL_SAVED_PATH</find>
+      <find>split_data</find>
+      <find>future_traj</find>
     </findStrings>
     <replaceStrings>
       <replace>restore</replace>
       <replace>mse_array</replace>
+      <replace>future_steps</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -168,24 +195,31 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/restore_data.py" />
         <option value="$PROJECT_DIR$/data_reg_fmt_new.py" />
-        <option value="$PROJECT_DIR$/data_reg_fmt.py" />
-        <option value="$PROJECT_DIR$/utils/calculate_mse.py" />
         <option value="$PROJECT_DIR$/utils/__init__.py" />
-        <option value="$PROJECT_DIR$/lstm.py" />
         <option value="$PROJECT_DIR$/backup/data_processing_bc.py" />
+        <option value="$PROJECT_DIR$/data_reg_fmt.py" />
         <option value="$PROJECT_DIR$/data_processing.py" />
-        <option value="$PROJECT_DIR$/utils/restore_data.py" />
-        <option value="$PROJECT_DIR$/utils/visualization.py" />
+        <option value="$PROJECT_DIR$/csv/206result.csv" />
+        <option value="$PROJECT_DIR$/lstm.py" />
         <option value="$PROJECT_DIR$/trajectory_test.py" />
+        <option value="$PROJECT_DIR$/traj_gen.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/utils/traj_gen.py" />
+        <option value="$PROJECT_DIR$/traj_gen_test.py" />
+        <option value="$PROJECT_DIR$/utils/calculate_mse.py" />
+        <option value="$PROJECT_DIR$/utils/visualization.py" />
+        <option value="$PROJECT_DIR$/test_script.py" />
+        <option value="$PROJECT_DIR$/ratio_test.py" />
+        <option value="$PROJECT_DIR$/utils/restore_data.py" />
+        <option value="$PROJECT_DIR$/data_test.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="336" />
+    <option name="x" value="65" />
     <option name="y" value="-4" />
-    <option name="width" value="924" />
-    <option name="height" value="1040" />
+    <option name="width" value="1855" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -196,17 +230,23 @@
         <subPane>
           <expand>
             <path>
-              <item name="test_lstm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_lstm" type="462c0819:PsiDirectoryNode" />
+              <item name="motion_prediction" type="b2602c69:ProjectViewProjectNode" />
+              <item name="motion_prediction" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="test_lstm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_lstm" type="462c0819:PsiDirectoryNode" />
+              <item name="motion_prediction" type="b2602c69:ProjectViewProjectNode" />
+              <item name="motion_prediction" type="462c0819:PsiDirectoryNode" />
+              <item name="pkl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="motion_prediction" type="b2602c69:ProjectViewProjectNode" />
+              <item name="motion_prediction" type="462c0819:PsiDirectoryNode" />
+              <item name="results" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="motion_prediction" type="b2602c69:ProjectViewProjectNode" />
+              <item name="motion_prediction" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_lstm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -216,7 +256,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ipromps" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -231,7 +271,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.trajectory_test">
+  <component name="RunManager" selected="Python.data_test">
     <configuration name="calculate_mse" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="test_lstm" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -250,7 +290,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="data_reg_fmt" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="data_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="test_lstm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -262,13 +302,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_reg_fmt.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ratio_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="test_lstm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -280,13 +320,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ratio_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="trajectory_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="restore_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="test_lstm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -294,28 +334,48 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/trajectory_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/restore_data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="visualization" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="test_lstm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/visualization.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.data_reg_fmt" />
       <item itemvalue="Python.calculate_mse" />
-      <item itemvalue="Python.main" />
-      <item itemvalue="Python.trajectory_test" />
+      <item itemvalue="Python.visualization" />
+      <item itemvalue="Python.data_test" />
+      <item itemvalue="Python.ratio_test" />
+      <item itemvalue="Python.restore_data" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.trajectory_test" />
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python.data_test" />
+        <item itemvalue="Python.restore_data" />
+        <item itemvalue="Python.ratio_test" />
+        <item itemvalue="Python.visualization" />
         <item itemvalue="Python.calculate_mse" />
-        <item itemvalue="Python.data_reg_fmt" />
       </list>
     </recent_temporary>
   </component>
@@ -332,19 +392,29 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Nosetests_in_test_script_py - 2018.07.10 at 15h 32m 57s.xml">
+      <configuration name="Nosetests in test_script.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_script_py - 2018.07.10 at 15h 33m 11s.xml">
+      <configuration name="Nosetests in test_script.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_test_script_py - 2018.07.10 at 15h 33m 35s.xml">
+      <configuration name="Nosetests in test_script.py" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.104043126" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16603774" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.088948786" side_tool="true" weight="0.46582544" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.9083558" weight="0.31230283" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.9083558" weight="0.37118822" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.9110512" weight="0.2597266" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.9110512" weight="0.22082019" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -352,6 +422,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -378,6 +449,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils/restore_data.py</url>
+          <line>82</line>
+          <option name="timeStamp" value="181" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -385,60 +463,10 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="125" />
+      <option name="time" value="182" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tensorflow_save-load-model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
-          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_processing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#24#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow_save-load-model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm.py" />
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ops_logs/lstm/checkpoint" />
-    <entry file="file://$PROJECT_DIR$/data_processing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#24#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lstm.py" />
     <entry file="file://$PROJECT_DIR$/tensorflow_save-load-model.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -495,143 +523,159 @@
     <entry file="file://$PROJECT_DIR$/ops_logs/lstm/model.ckpt-1.data-00000-of-00001" />
     <entry file="file://$PROJECT_DIR$/ops_logs/lstm/graph.pbtxt" />
     <entry file="file://$PROJECT_DIR$/ops_logs/lstm/model.ckpt-1.index" />
-    <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/tensorflow/contrib/learn/python/learn/estimators/estimator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="1551" column="6" selection-start-line="1551" selection-start-column="6" selection-end-line="1551" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/tensorflow/contrib/learn/python/learn/estimators/estimator.py" />
     <entry file="file://$PROJECT_DIR$/csv/result.csv" />
     <entry file="file://$PROJECT_DIR$/ops_logs/lstm/checkpoint" />
-    <entry file="file://$USER_HOME$/tensorflow_p3/lib/python3.5/site-packages/sklearn/externals/joblib/numpy_pickle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="524" selection-start-line="524" selection-end-line="524" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/tensorflow_p3/lib/python3.5/site-packages/sklearn/externals/joblib/numpy_pickle.py" />
     <entry file="file://$PROJECT_DIR$/restore_data.py" />
     <entry file="file://$PROJECT_DIR$/csv/208result.csv" />
     <entry file="file://$PROJECT_DIR$/csv/2010result.csv" />
     <entry file="file://$PROJECT_DIR$/csv/3010result.csv" />
     <entry file="file://$PROJECT_DIR$/data_reg_fmt_new.py" />
-    <entry file="file://$PROJECT_DIR$/backup/lstm.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/backup/lstm.py" />
     <entry file="file://$PROJECT_DIR$/utils/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/backup/data_processing_bc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="75" selection-start-line="75" selection-end-line="96" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/csv/206result.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/backup/data_processing_bc.py" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/backup/main_bc.py">
+    <entry file="file://$PROJECT_DIR$/backup/main_bc.py" />
+    <entry file="file://$PROJECT_DIR$/tensorflow_save-load-model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-127">
-          <caret line="93" column="28" selection-start-line="93" selection-start-column="28" selection-end-line="93" selection-end-column="28" />
+        <state relative-caret-position="608">
+          <caret line="33" selection-start-line="33" selection-end-line="34" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python2.7/site-packages/tensorflow/contrib/learn/python/learn/estimators/estimator.py" />
+    <entry file="file://$PROJECT_DIR$/csv/206result.csv" />
+    <entry file="file://$PROJECT_DIR$/trajectory_test.py" />
+    <entry file="file://$PROJECT_DIR$/traj_gen.py" />
+    <entry file="file://$PROJECT_DIR$/csv/206ratio_result.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#24#88#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_reg_fmt.py">
+    <entry file="file:///usr/lib/python2.7/dist-packages/matplotlib/figure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state>
+          <caret line="1317" column="8" selection-start-line="1317" selection-start-column="8" selection-end-line="1317" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/traj_gen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/calculate_mse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="18" column="38" lean-forward="true" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="e#54#91#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/calculate_mse.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="-202">
+          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-          <folding>
-            <element signature="e#24#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/restore_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="28" />
-          <folding>
-            <element signature="e#24#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_processing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1690">
-          <caret line="120" column="7" selection-start-line="120" selection-start-column="7" selection-end-line="120" selection-end-column="7" />
+        <state relative-caret-position="197">
+          <caret line="128" column="4" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="4" />
           <folding>
             <element signature="e#24#88#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow_save-load-model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-509">
-          <caret line="33" selection-start-line="33" selection-end-line="34" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/visualization.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python2.7/site-packages/tensorflow/contrib/learn/python/learn/estimators/estimator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="1506" column="6" selection-start-line="1506" selection-start-column="6" selection-end-line="1506" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trajectory_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+        <state relative-caret-position="206">
+          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/traj_gen_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+        <state relative-caret-position="444">
+          <caret line="103" selection-start-line="103" selection-end-line="106" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ratio_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="96" selection-start-line="96" selection-end-line="99" selection-end-column="37" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/restore_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+          <folding>
+            <element signature="e#24#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_reg_fmt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding>
+            <element signature="e#54#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#54#91#0" expanded="true" />
           </folding>
         </state>
       </provider>
