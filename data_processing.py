@@ -30,7 +30,7 @@ def rnn_data_X(data):
     # chose input from sequence considering the maximal timestep of output layer
     rnn_df = []
     for i in range(data.shape[0] - in_timesteps - (out_timesteps_max-1)):
-        X = data[i: i+in_timesteps, 3:9]  #hand (3:6) + elbow (6:9)
+        X = data[i: i+in_timesteps, 0:9]  #hand (3:6) + elbow (6:9)
         rnn_df.append(X if len(X.shape) > 1 else [[item] for item in X])
     # print('X shape:', rnn_df[0].shape)
     

@@ -2,7 +2,8 @@ from __future__ import print_function
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
-from matplotlib import pyplot as plt
+import os
+import ConfigParser
 
 import csv
 import pickle
@@ -17,11 +18,22 @@ from lstm import lstm_model
 from data_processing import generate_data
 import logging
 
+# the current file path
+FILE_PATH = os.path.dirname(__file__)
+TASK_NAME_LIST = []
+
+# read models cfg file
+cp_models = ConfigParser.SafeConfigParser()
+cp_models.read(os.path.join(FILE_PATH, './cfg/models.cfg'))
+# read models params
+path = cp_models.get('model', 'log_dir')
+MODEL_NAME = cp_models.get('model', 'model_name')
+LOG_DIR = os.path.join(FILE_PATH, path, MODEL_NAME)
+
 ## optimization hyper-parameters
 TRAINING_STEPS = 10000
 VALIDATION_STEPS = 1000
 BATCH_SIZE = 100
-LOG_DIR = './ops_logs/lstm/model_20_5_6'
 
 ## Save log to a local file
 # get TF logger
@@ -38,9 +50,14 @@ fh.setFormatter(formatter)
 log.addHandler(fh)
 
 ## load model and dataset
-X=pickle.load(open("./datasets/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "rb"))
-Y=pickle.load(open("./datasets/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "rb"))
-
+data_path = os.path.join(FILE_PATH, './model', MODEL_NAME)
+try:
+    ## load model and dataset
+    X = pickle.load(
+        open(data_path + "/x_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
+    Y = pickle.load(
+        open(data_path + "/y_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
+except Exception as e: print(e)
 
 ## build the lstm model
 model_fn = lstm_model()

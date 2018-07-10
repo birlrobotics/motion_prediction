@@ -24,9 +24,7 @@ for i, dataset in enumerate(datasets):
     left_hand = sample['left_hand']
     left_joints = sample['left_joints']
     reg_fmt_dataset.append(np.hstack([left_joints,left_hand]))
-      
-    # print('length of sample:', str(j), len(sample))
-    # print('length of left_hand:', str(j), left_hand.shape) 
+
   print('length of reg_fmt_dataset:', len(reg_fmt_dataset))  
   
   reg_fmt_datasets.append(reg_fmt_dataset)  

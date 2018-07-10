@@ -2,12 +2,11 @@ from __future__ import print_function
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
-from matplotlib import pyplot as plt
 
-import csv
 import pickle
-from utils import restore_data
-from utils import calculate_mse
+import os
+import ConfigParser
+
 
 import tensorflow as tf
 from tensorflow.contrib import learn
@@ -17,11 +16,22 @@ from lstm import lstm_model
 from data_processing import generate_data
 import logging
 
+# the current file path
+FILE_PATH = os.path.dirname(__file__)
+TASK_NAME_LIST = []
+
+# read models cfg file
+cp_models = ConfigParser.SafeConfigParser()
+cp_models.read(os.path.join(FILE_PATH, './cfg/models.cfg'))
+# read models params
+path = cp_models.get('model', 'log_dir')
+MODEL_NAME = cp_models.get('model', 'model_name')
+LOG_DIR = os.path.join(FILE_PATH, path, MODEL_NAME)
+
 ## optimization hyper-parameters
-TRAINING_STEPS = 20000
+TRAINING_STEPS = 30000
 VALIDATION_STEPS = 1000
 BATCH_SIZE = 100
-LOG_DIR = './ops_logs/lstm/model_20_5_6'
 
 ## Save log to a local file
 # get TF logger
@@ -37,17 +47,18 @@ fh.setLevel(logging.DEBUG)
 fh.setFormatter(formatter)
 log.addHandler(fh)
 
-
+data_path = os.path.join(FILE_PATH, './model', MODEL_NAME)
 try:
     ## load model and dataset
-    X = pickle.load(open("./datasets/x_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
-    Y = pickle.load(open("./datasets/y_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
+    X = pickle.load(open(data_path+"/x_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
+    Y = pickle.load(open(data_path+"/y_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
 except:
     ## generate train/val/test datasets based on raw data
     X, Y = generate_data('./reg_fmt_datasets.pkl')
     # save dataset
-    pickle.dump(X,open("./datasets/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
-    pickle.dump(Y,open("./datasets/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
+    os.mkdir(data_path)
+    pickle.dump(X,open(data_path+"/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
+    pickle.dump(Y,open(data_path+"/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "wb"))
     print ("Save data successfully!")
 
 
@@ -72,12 +83,12 @@ regressor.fit(X['train'], Y['train'], monitors=[validation_monitor], batch_size=
 #todo: add experiment, joing angles error in Cartersian space
 
 
-## prepare for testing
-step = 0.05
-ratio = [step * i for i in range(1, int(1 / step) + 1)]
-# mse_array = [0] * len(ratio)
-mse_array = np.zeros(len(ratio))
-count = 0
+# ## prepare for testing
+# step = 0.05
+# ratio = [step * i for i in range(1, int(1 / step) + 1)]
+# # mse_array = [0] * len(ratio)
+# mse_array = np.zeros(len(ratio))
+# count = 0
 
 # # start test
 # for X_test,Y_test in zip(X['test'], Y['test']):

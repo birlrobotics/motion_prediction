@@ -6,13 +6,13 @@ from __future__ import print_function
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
-from matplotlib import pyplot as plt
-import time
-import csv
+
 import pickle
 from utils import restore_data
-from utils import calculate_mse
 from utils import traj_gen
+
+import os
+import ConfigParser
 
 import tensorflow as tf
 from tensorflow.contrib import learn
@@ -22,11 +22,23 @@ from lstm import lstm_model
 from data_processing import generate_data
 import logging
 
+# the current file path
+FILE_PATH = os.path.dirname(__file__)
+TASK_NAME_LIST = []
+
+# read models cfg file
+cp_models = ConfigParser.SafeConfigParser()
+cp_models.read(os.path.join(FILE_PATH, './cfg/models.cfg'))
+# read models params
+path = cp_models.get('model', 'log_dir')
+MODEL_NAME = cp_models.get('model', 'model_name')
+LOG_DIR = os.path.join(FILE_PATH, path, MODEL_NAME)
+
+
 ## optimization hyper-parameters
 TRAINING_STEPS = 100
 VALIDATION_STEPS = 1000
 BATCH_SIZE = 100
-LOG_DIR = './ops_logs/lstm/model_20_5_6'
 
 ## Save log to a local file
 # get TF logger
@@ -43,8 +55,14 @@ fh.setFormatter(formatter)
 log.addHandler(fh)
 
 ## load model and dataset
-X=pickle.load(open("./dataset/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "rb"))
-Y=pickle.load(open("./dataset/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "rb"))
+data_path = os.path.join(FILE_PATH, './model', MODEL_NAME)
+try:
+    ## load model and dataset
+    X = pickle.load(
+        open(data_path + "/x_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
+    Y = pickle.load(
+        open(data_path + "/y_set" + str(lstm.IN_TIMESTEPS) + str(lstm.OUT_TIMESTEPS_RANGE[-1]) + ".pkl", "rb"))
+except Exception as e: print(e)
 
 ## build the lstm model
 model_fn = lstm_model()
@@ -97,12 +115,13 @@ for X_test,Y_test in zip(X['test'], Y['test']):
             begin += lstm.DENSE_LAYER_RANGE[i]
             end = begin + lstm.DENSE_LAYER_RANGE[i + 1]
 
-    raw_true_trajs.append(traj_gen.traj_generation(y_true_restore))
-    raw_pred_trajs.append(traj_gen.traj_generation(y_pred_restore))
+    raw_true_trajs.append(traj_gen.traj_generation(y_true_restore,steps=3))
+    raw_pred_trajs.append(traj_gen.traj_generation(y_pred_restore,steps=3))
 
 print("finish prediction, now check error")
 #for debug
-pickle.dump(raw_true_trajs,open("./results/raw_true_trajs.pkl","wb"))
-pickle.dump(raw_pred_trajs, open("./results/raw_pred_trajs.pkl", "wb"))
+data_path = os.path.join(FILE_PATH, './model', MODEL_NAME)
+pickle.dump(raw_true_trajs,open(data_path+"/raw_true_trajs.pkl","wb"))
+pickle.dump(raw_pred_trajs, open(data_path+"/raw_pred_trajs.pkl", "wb"))
 print("save restored trajs successfully!")
 

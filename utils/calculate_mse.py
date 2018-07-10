@@ -16,21 +16,6 @@ def dist(pred,true):
     return dist.mean(),dist
 
 
-# def seperate_data(y_true,predicted):
-#     for set1, set2 in zip(y_true, predicted):
-#         len1 = len(set1)
-#         len2 = len(set1[0])
-#         sample1= np.reshape(set1, (len1 * len2))
-#         sample2 = np.reshape(set2,(len1 * len2))
-#         print(mse(sample1,sample2))
-#
-# def traj_dist(pred,true):
-#     dist = []
-#     for sample1,sample2 in zip(pred,true):
-#         dist.append(dist(sample1,sample2))
-#     dist_mean=np.mean(dist)
-#     return dist_mean
-
 
 def main():
     y_true = pickle.load(open("../results/raw_true_trajs.pkl", "rb"))
