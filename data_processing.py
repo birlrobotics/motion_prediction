@@ -55,7 +55,7 @@ def rnn_data_Y(data):
     
         Y_list = []  # multiple outputs for one input timestep
         for out_timesteps in range(out_timesteps_min, out_timesteps_max+1):
-            Y = data[i+in_timesteps: i+in_timesteps + out_timesteps, 0:6]  # robot (0:3)
+            Y = data[i+in_timesteps: i+in_timesteps + out_timesteps, 0:6]  # robot (0:3) human_hand (3:6)
             Y = Y.reshape((out_timesteps,OUTPUT_DIM))
             Y_list.append(Y)
             # print('input_timestep[{0}] and output_timestep[{1}] Y shape: {2}'.format(i, out_timesteps, Y.shape))

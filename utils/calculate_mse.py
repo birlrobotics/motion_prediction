@@ -7,7 +7,7 @@ def mse(pred, true):
 
 def dist(pred,true):
     '''
-    calculate Cartesian distance error along a trajectory
+    calculate square root distance error along a trajectory
     '''
     dist = []
     for p1, p2 in zip(pred, true):

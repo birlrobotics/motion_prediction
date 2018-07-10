@@ -1,13 +1,18 @@
+'''
+generate trajectory
+'''
+
 from __future__ import print_function
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
-
+import time
 import csv
 import pickle
 from utils import restore_data
 from utils import calculate_mse
+from utils import traj_gen
 
 import tensorflow as tf
 from tensorflow.contrib import learn
@@ -18,7 +23,7 @@ from data_processing import generate_data
 import logging
 
 ## optimization hyper-parameters
-TRAINING_STEPS = 10000
+TRAINING_STEPS = 100
 VALIDATION_STEPS = 1000
 BATCH_SIZE = 100
 LOG_DIR = './ops_logs/lstm/model_20_5_6'
@@ -38,9 +43,8 @@ fh.setFormatter(formatter)
 log.addHandler(fh)
 
 ## load model and dataset
-X=pickle.load(open("./datasets/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "rb"))
-Y=pickle.load(open("./datasets/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "rb"))
-
+X=pickle.load(open("./dataset/x_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "rb"))
+Y=pickle.load(open("./dataset/y_set"+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])+".pkl", "rb"))
 
 ## build the lstm model
 model_fn = lstm_model()
@@ -54,23 +58,13 @@ regressor = learn.SKCompat(estimator)
 validation_monitor = learn.monitors.ValidationMonitor(X['val'], Y['val'], every_n_steps=VALIDATION_STEPS)
 
 ## fit the train dataset
-TRAINING_STEPS = 1
-regressor.fit(X['train'], Y['train'], monitors=[validation_monitor], batch_size=BATCH_SIZE, steps=TRAINING_STEPS)
+regressor.fit(X['train'], Y['train'], monitors=None, batch_size=BATCH_SIZE, steps=1) #load model
 
-
-#todo: test average predicted error each step
-#todo: add experiment, joint angles error
-#todo: add experiment, joing angles error in Cartersian space
-
-
-## prepare for testing
-step = 0.05
-ratio = [step * i for i in range(1, int(1 / step) + 1)]
-# mse_array = [0] * len(ratio)
-mse_array = np.zeros(len(ratio))
-count = 0
 
 # start test
+raw_true_trajs=[]
+raw_pred_trajs=[]
+
 for X_test,Y_test in zip(X['test'], Y['test']):
 
     ## predict using test datasets and  calculate rmse with reshaping correctly
@@ -94,41 +88,21 @@ for X_test,Y_test in zip(X['test'], Y['test']):
         y_true_split = y_true[:, begin:end]
         y_pred_split = y_pred[:, begin:end]
 
-        # # for debug
-        # pickle.dump(y_true_split,open("test_y_true.pkl","wb"))
-        # pickle.dump(y_pred_split, open("test_y_predicted.pkl", "wb"))
-        # print("save successfully!")
-
         ## restore to origin data (0-1 to original range)
         y_true_restore = restore_data.restore_dataset(y_true_split)
-        pred_restore = restore_data.restore_dataset(y_pred_split)
-
-        #todo: save true and pred into new file
+        y_pred_restore = restore_data.restore_dataset(y_pred_split)
 
         # update iteration and check error
         if (i + 1) < len(lstm.DENSE_LAYER_RANGE):
             begin += lstm.DENSE_LAYER_RANGE[i]
             end = begin + lstm.DENSE_LAYER_RANGE[i + 1]
 
-        ## write mse against ratio to csv file
-        for i, r in enumerate(ratio):
-            index = int(r * len(y_true_restore) - 1)
-            # imse = calculate_mse.mse(pred_restore[index],y_true_restore[index])
-            dmse,_ = calculate_mse.dist(pred_restore[index], y_true_restore[index])
-            mse_array[i] = mse_array[i] + dmse
+    raw_true_trajs.append(traj_gen.traj_generation(y_true_restore))
+    raw_pred_trajs.append(traj_gen.traj_generation(y_pred_restore))
 
-        count+=1
-        print("count: ", count)
+print("finish prediction, now check error")
+#for debug
+pickle.dump(raw_true_trajs,open("./results/raw_true_trajs.pkl","wb"))
+pickle.dump(raw_pred_trajs, open("./results/raw_pred_trajs.pkl", "wb"))
+print("save restored trajs successfully!")
 
-print("test trajectories: ",count)
-mse_array = np.divide(mse_array,count)
-
-# mse_array[:]=[x/len(X['test']) for x in mse_array]
-
-#write to csv file
-CSV_PATH = './csv/'+str(lstm.IN_TIMESTEPS)+str(lstm.OUT_TIMESTEPS_RANGE[-1])
-with open(CSV_PATH+'ratio_result.csv', 'a') as csvfile:
-    spamwriter = csv.writer(csvfile, delimiter=',',
-                            quotechar=',', quoting=csv.QUOTE_MINIMAL)
-    spamwriter.writerow(ratio)
-    spamwriter.writerow(mse_array)
