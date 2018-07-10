@@ -115,8 +115,8 @@ for X_test,Y_test in zip(X['test'], Y['test']):
             begin += lstm.DENSE_LAYER_RANGE[i]
             end = begin + lstm.DENSE_LAYER_RANGE[i + 1]
 
-    raw_true_trajs.append(traj_gen.traj_generation(y_true_restore,steps=3))
-    raw_pred_trajs.append(traj_gen.traj_generation(y_pred_restore,steps=3))
+    raw_true_trajs.append(traj_gen.traj_generation(y_true_restore,step=3))
+    raw_pred_trajs.append(traj_gen.traj_generation(y_pred_restore,step=3))
 
 print("finish prediction, now check error")
 #for debug
